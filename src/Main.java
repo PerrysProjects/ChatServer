@@ -17,8 +17,8 @@ public class Main {
         ServerSocket serverSocket = null;
         try {
             serverSocket = new ServerSocket(port);
-        } catch (IOException e) {
-            println(new RuntimeException(e).toString());
+        } catch(IOException e) {
+            println(e.getMessage());
         }
         println("Server started on port " + port);
 
@@ -27,7 +27,7 @@ public class Main {
             try {
                 socket = serverSocket.accept();
             } catch(IOException e) {
-                println(new RuntimeException(e).toString());
+                println(e.getMessage());
             }
             println("New client connected: " + socket);
 
@@ -53,7 +53,7 @@ public class Main {
         String argument = "";
         for(String s : args) {
             String[] splitArg = s.split(":");
-            if (splitArg[0].equalsIgnoreCase("-" + arg)) {
+            if(splitArg[0].equalsIgnoreCase("-" + arg)) {
                 argument = splitArg[1];
             } else {
                 argument = null;
@@ -62,7 +62,7 @@ public class Main {
         }
         return argument;
     }
-    
+
     public static void println(String text) {
         System.out.println(text);
         Log.log(text);

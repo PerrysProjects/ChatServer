@@ -23,9 +23,6 @@ public class ClientHandler implements Runnable {
             while(true) {
                 out.println("Enter your username:");
                 username = in.readLine().trim();
-                if(username == null) {
-                    return;
-                }
                 synchronized(Main.getUsernames()) {
                     if(!Main.getUsernames().contains(username)) {
                         Main.getUsernames().add(username);
